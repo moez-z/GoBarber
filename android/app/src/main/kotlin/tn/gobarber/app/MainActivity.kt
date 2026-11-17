@@ -1,4 +1,4 @@
-package com.example.gobarber
+package tn.gobarber.app
 
 import io.flutter.embedding.android.FlutterActivity
 
