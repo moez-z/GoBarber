@@ -1,18 +1,36 @@
 # GoBarber (Flutter)
 
-Roles: **customer** (browse barbers, book free slots, cancel/rebook), **barber** (daily timeline, check-in/complete/cancel),
-**admin** (overview, manage barbers & services).
+Roles: **customer**, **employee** (barber), **owner** (shop owner), **platformAdmin** (CEO).
+Languages: French and Tunisian Arabic (derja, RTL). Currency: TND (stored as millimes).
 
 ## Run
 ```bash
-flutter create gobarber          # generates android/ios/web folders
-# copy this project's lib/ and pubspec.yaml over the generated ones
-cd gobarber && flutter pub get && flutter run
+flutter pub get
+flutter gen-l10n            # generates lib/l10n/app_localizations*.dart
+flutter run                 # or: flutter run -d chrome
+```
+Optional config (never commit real values; `env/*.json` is git-ignored):
+```bash
+copy env\dev.example.json env\dev.json
+flutter run --dart-define-from-file=env/dev.json
 ```
 
-## Demo logins
-- customer@gobarber.com / customer123
-- marcus@gobarber.com / barber123  (also devon@gobarber.com)
-- admin@gobarber.com / admin123
+## Check
+```bash
+flutter analyze
+flutter test
+flutter build apk --debug
+```
 
-Data is in memory (lib/store.dart) and resets on restart. Replace the Store methods with Firebase/Supabase/REST calls to persist.
+## Structure
+- `lib/core` config, errors, formatting (TND/date), theme, shared widgets, availability logic
+- `lib/models` plain data classes (no passwords anywhere)
+- `lib/data` repository interfaces + in-memory demo implementation (Firebase comes in Phase 2/3)
+- `lib/providers` one ChangeNotifier per concern (auth, catalog, appointments, locale)
+- `lib/features` screens per role
+- `lib/l10n` ARB translation files (fr, ar)
+
+## Demo mode (Phase 1 only)
+Data is in memory and resets on restart. The login screen has one-tap demo accounts, and the mock sign-in
+**does not check passwords** (none are stored). It is for development only and is replaced by Firebase Auth in Phase 2.
+Demo e-mails: customer@, marcus@ (employee), owner@, ceo@ + `gobarber.com`.
