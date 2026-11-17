@@ -1,0 +1,216 @@
+{
+  "@@locale": "fr",
+  "tagline": "Réservez votre fauteuil. Gérez votre journée.",
+  "signIn": "Se connecter",
+  "createAccount": "Créer un compte",
+  "fullName": "Nom complet",
+  "email": "E-mail",
+  "password": "Mot de passe",
+  "haveAccount": "J’ai déjà un compte",
+  "newCustomer": "Nouveau client ? Créez un compte",
+  "demoAccounts": "COMPTES DE DÉMONSTRATION",
+  "roleCustomer": "Client",
+  "roleEmployee": "Barbier",
+  "roleOwner": "Propriétaire",
+  "rolePlatformAdmin": "Admin plateforme",
+  "language": "Langue",
+  "languageFr": "Français",
+  "languageAr": "العربية",
+  "signOut": "Déconnexion",
+  "retry": "Réessayer",
+  "errWrongCredentials": "E-mail ou mot de passe incorrect.",
+  "errInvalidInput": "Informations invalides ou e-mail déjà utilisé. Vérifiez les champs (e-mail valide, mot de passe de 6 caractères minimum).",
+  "errSlotTaken": "Ce créneau vient d’être réservé.",
+  "errUnknown": "Une erreur est survenue. Veuillez réessayer.",
+  "navExplore": "Explorer",
+  "navAppointments": "Rendez-vous",
+  "titleAppointments": "Mes rendez-vous",
+  "hello": "Bonjour, {name}",
+  "@hello": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "findBarber": "Trouvez votre barbier",
+  "searchHint": "Rechercher un barbier ou un salon...",
+  "fromPrice": "À partir de {price}",
+  "@fromPrice": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "nextSlot": "Prochain : {when}",
+  "@nextSlot": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "fullyBooked": "Complet cette semaine",
+  "viewSlots": "Voir les créneaux",
+  "noBarber": "Aucun barbier trouvé.",
+  "rating": "★ {rating} ({count} avis)",
+  "@rating": {
+    "placeholders": {
+      "rating": {
+        "type": "String"
+      },
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "selectService": "Choisir le service",
+  "chooseDate": "Choisir la date",
+  "availableTime": "Heures disponibles",
+  "noOpenings": "Aucun créneau libre ce jour-là.",
+  "minutesShort": "{minutes} min",
+  "@minutesShort": {
+    "placeholders": {
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "pickATime": "Choisir une heure",
+  "confirmBooking": "Confirmer • {price} • {when}",
+  "@confirmBooking": {
+    "placeholders": {
+      "price": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "booked": "Réservé {when} avec {name}",
+  "@booked": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "tabUpcoming": "À venir ({count})",
+  "@tabUpcoming": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "tabPast": "Passés ({count})",
+  "@tabPast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noUpcoming": "Aucun rendez-vous à venir.",
+  "noHistory": "Aucun historique pour le moment.",
+  "confirmedSession": "Rendez-vous confirmé",
+  "sessionDetails": "{service} • {minutes} min • {price} (à régler sur place)",
+  "@sessionDetails": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      },
+      "minutes": {
+        "type": "int"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "withBarber": "avec {name}",
+  "@withBarber": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cancelAppointment": "Annuler le rendez-vous",
+  "rebook": "Réserver à nouveau",
+  "mySchedule": "Mon planning",
+  "statBooked": "Réservés",
+  "statEstDaily": "CA estimé",
+  "statOpenings": "Créneaux libres",
+  "nClients": "{count, plural, =0{Aucun client} =1{1 client} other{{count} clients}}",
+  "@nClients": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "nextInChair": "Prochain sur le fauteuil",
+  "inTheChair": "Sur le fauteuil",
+  "checkIn": "Arrivée",
+  "complete": "Terminer",
+  "cancel": "Annuler",
+  "timeline": "Agenda de la journée",
+  "noAppointmentsDay": "Aucun rendez-vous ce jour-là.",
+  "noBarberProfile": "Aucun profil de barbier n’est lié à ce compte.",
+  "statusConfirmed": "Confirmé",
+  "statusCheckedIn": "Sur le fauteuil",
+  "statusCompleted": "Terminé",
+  "statusCancelled": "Annulé",
+  "ownerTitle": "Mon salon",
+  "navOverview": "Aperçu",
+  "navBarbers": "Barbiers",
+  "navServices": "Services",
+  "statCustomers": "Clients",
+  "statBarbers": "Barbiers",
+  "statBookings": "Réservations",
+  "statRevenue": "Revenus",
+  "latestAppointments": "Derniers rendez-vous",
+  "newBarber": "Nouveau barbier",
+  "newService": "Nouveau service",
+  "fieldName": "Nom",
+  "fieldSpecialty": "Spécialité",
+  "fieldShop": "Salon",
+  "fieldMinutes": "Durée (minutes)",
+  "fieldPrice": "Prix (DT)",
+  "add": "Ajouter",
+  "platformTitle": "Administration de la plateforme",
+  "platformSoon": "Les outils de la plateforme (validation des salons, modération, statistiques) arriveront dans une prochaine phase.",
+  "whenToday": "Aujourd’hui, {time}",
+  "@whenToday": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "whenTomorrow": "Demain, {time}",
+  "@whenTomorrow": {
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "whenOther": "{date}, {time}",
+  "@whenOther": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  }
+}
