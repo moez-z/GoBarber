@@ -8,7 +8,7 @@
   "password": "Mot de passe",
   "haveAccount": "J’ai déjà un compte",
   "newCustomer": "Nouveau client ? Créez un compte",
-  "demoAccounts": "COMPTES DE DÉMONSTRATION",
+  "demoAccounts": "COMPTES DE DÉMONSTRATION (DEBUG)",
   "roleCustomer": "Client",
   "roleEmployee": "Barbier",
   "roleOwner": "Propriétaire",
@@ -212,5 +212,36 @@
         "type": "String"
       }
     }
-  }
+  },
+  "forgotPassword": "Mot de passe oublié ?",
+  "resetTitle": "Réinitialiser le mot de passe",
+  "resetIntro": "Saisissez votre e-mail. Nous vous enverrons un lien pour choisir un nouveau mot de passe.",
+  "resetSend": "Envoyer le lien",
+  "resetSent": "Si un compte existe pour cet e-mail, un lien de réinitialisation vient d’être envoyé. Pensez à vérifier vos courriers indésirables.",
+  "backToSignIn": "Retour à la connexion",
+  "passwordRules": "Au moins 8 caractères, avec une lettre et un chiffre.",
+  "fieldRequired": "Champ obligatoire.",
+  "fieldInvalidEmail": "Adresse e-mail invalide.",
+  "fieldNameShort": "Nom trop court.",
+  "fieldPasswordShort": "8 caractères minimum.",
+  "fieldPasswordWeak": "Ajoutez au moins une lettre et un chiffre.",
+  "errInvalidEmail": "Adresse e-mail invalide.",
+  "errWeakPassword": "Mot de passe trop faible : 8 caractères minimum, avec une lettre et un chiffre.",
+  "errEmailInUse": "Un compte existe déjà avec cet e-mail.",
+  "errNetwork": "Problème de connexion. Vérifiez votre réseau.",
+  "errTooMany": "Trop de tentatives. Réessayez plus tard.",
+  "errUserDisabled": "Ce compte est désactivé.",
+  "errUnavailable": "La connexion n’est pas disponible sur cette plateforme.",
+  "verifyBanner": "Vérifiez votre e-mail ({email}) pour sécuriser votre compte.",
+  "@verifyBanner": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyResend": "Renvoyer l’e-mail",
+  "verifyRefresh": "J’ai vérifié",
+  "verifySent": "E-mail de vérification envoyé.",
+  "verifyNotYet": "Pas encore vérifié."
 }

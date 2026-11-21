@@ -1,5 +1,6 @@
 import 'package:gobarber/core/domain/availability.dart';
 import 'package:gobarber/core/errors/app_exception.dart';
+import 'package:gobarber/data/demo/demo_accounts.dart';
 import 'package:gobarber/data/repositories.dart';
 import 'package:gobarber/models/appointment.dart';
 import 'package:gobarber/models/barber.dart';
@@ -11,13 +12,7 @@ final _emailRe = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
 /// Demo data shared by the in-memory repositories. Not persisted.
 class MemoryDb {
   MemoryDb() {
-    users.addAll(const [
-      AppUser(id: 'u0', name: 'CEO GoBarber', email: 'ceo@gobarber.com', role: Role.platformAdmin),
-      AppUser(id: 'u1', name: 'Propriétaire', email: 'owner@gobarber.com', role: Role.owner),
-      AppUser(id: 'u2', name: 'Marcus Vance', email: 'marcus@gobarber.com', role: Role.employee),
-      AppUser(id: 'u3', name: 'Devon Taylor', email: 'devon@gobarber.com', role: Role.employee),
-      AppUser(id: 'u4', name: 'Alex Wright', email: 'customer@gobarber.com', role: Role.customer),
-    ]);
+    users.addAll(demoUsers);
     barbers.addAll(const [
       Barber(id: 'b1', userId: 'u2', name: 'Marcus Vance', specialty: 'Fade', shop: 'Downtown Barber Co.', rating: 4.9, reviews: 184),
       Barber(id: 'b2', userId: 'u3', name: 'Devon Taylor', specialty: 'Barbier maître', shop: 'Atelier Blades', rating: 5.0, reviews: 312),
@@ -45,48 +40,6 @@ class MemoryDb {
       id: nextId(), customerId: 'u4', customerName: 'Alex Wright', barberId: b.id,
       barberName: b.name, serviceId: s.id, serviceName: s.name, start: at,
       minutes: s.minutes, priceMillimes: s.priceMillimes));
-}
-
-/// DEV ONLY. There are no passwords anywhere in the mock: [signIn] only checks that the
-/// e-mail belongs to a demo account and [register] only validates the password's length
-/// before discarding it. Real credential checks arrive with Firebase Auth in Phase 2.
-class MemoryAuthRepository implements AuthRepository {
-  MemoryAuthRepository(this._db);
-  final MemoryDb _db;
-  AppUser? _current;
-
-  @override
-  bool get supportsDemoSignIn => true;
-
-  @override
-  Future<AppUser?> restoreSession() async => _current;
-
-  @override
-  Future<AppUser> signIn(String email, String password) async {
-    final e = email.trim().toLowerCase();
-    final match = _db.users.where((u) => u.email == e);
-    if (match.isEmpty || password.isEmpty) throw const AppException(ErrorCode.wrongCredentials);
-    return _current = match.first;
-  }
-
-  @override
-  Future<AppUser> signInDemo(Role role) async =>
-      _current = _db.users.firstWhere((u) => u.role == role);
-
-  @override
-  Future<AppUser> register({required String name, required String email, required String password}) async {
-    final e = email.trim().toLowerCase();
-    if (name.trim().isEmpty || !_emailRe.hasMatch(e) || password.length < 6 ||
-        _db.users.any((u) => u.email == e)) {
-      throw const AppException(ErrorCode.invalidInput);
-    }
-    final user = AppUser(id: _db.nextId(), name: name.trim(), email: e, role: Role.customer);
-    _db.users.add(user);
-    return _current = user;
-  }
-
-  @override
-  Future<void> signOut() async => _current = null;
 }
 
 class MemoryCatalogRepository implements CatalogRepository {

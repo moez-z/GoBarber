@@ -8,7 +8,7 @@
   "password": "كلمة السر",
   "haveAccount": "عندي حساب",
   "newCustomer": "حريف جديد؟ أنشئ حساب",
-  "demoAccounts": "حسابات تجريبية",
+  "demoAccounts": "حسابات تجريبية (للتطوير فقط)",
   "roleCustomer": "حريف",
   "roleEmployee": "حلّاق",
   "roleOwner": "صاحب الصالون",
@@ -212,5 +212,36 @@
         "type": "String"
       }
     }
-  }
+  },
+  "forgotPassword": "نسيت كلمة السر؟",
+  "resetTitle": "إعادة تعيين كلمة السر",
+  "resetIntro": "اكتب الإيميل متاعك وباش نبعثولك رابط باش تختار كلمة سر جديدة.",
+  "resetSend": "ابعث الرابط",
+  "resetSent": "إذا فما حساب بالإيميل هذا، تبعثلو رابط إعادة التعيين. شوف زادة في الرسائل غير المرغوب فيها.",
+  "backToSignIn": "رجوع للدخول",
+  "passwordRules": "8 خانات على الأقل، فيهم حرف ورقم.",
+  "fieldRequired": "الخانة هاذي لازمة.",
+  "fieldInvalidEmail": "الإيميل موش صحيح.",
+  "fieldNameShort": "الاسم قصير برشا.",
+  "fieldPasswordShort": "8 خانات على الأقل.",
+  "fieldPasswordWeak": "لازم فيها حرف ورقم.",
+  "errInvalidEmail": "الإيميل موش صحيح.",
+  "errWeakPassword": "كلمة السر ضعيفة: 8 خانات على الأقل، فيها حرف ورقم.",
+  "errEmailInUse": "فما حساب بالإيميل هذا من قبل.",
+  "errNetwork": "مشكل في الكونيكسيون. ثبّت في الإنترنت متاعك.",
+  "errTooMany": "برشا محاولات. عاود جرّب مبعد.",
+  "errUserDisabled": "الحساب هذا موقوف.",
+  "errUnavailable": "الدخول موش متاح على المنصة هاذي.",
+  "verifyBanner": "أكّد الإيميل متاعك ({email}) باش نحميو حسابك.",
+  "@verifyBanner": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "verifyResend": "عاود ابعث الإيميل",
+  "verifyRefresh": "تأكدت",
+  "verifySent": "تبعث إيميل التأكيد.",
+  "verifyNotYet": "باقي ما تأكدش."
 }

@@ -7,6 +7,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('fr');
   await initializeDateFormatting('ar');
-  await bootstrapFirebase();
-  runApp(GoBarberApp(deps: AppDependencies.fromConfig()));
+  final firebaseReady = await bootstrapFirebase();
+  runApp(GoBarberApp(deps: AppDependencies.fromConfig(firebaseReady: firebaseReady)));
 }

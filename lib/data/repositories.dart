@@ -7,12 +7,20 @@ import 'package:gobarber/models/user.dart';
 /// demo implementation can be replaced by Firebase (Phase 2/3) without touching screens.
 /// Implementations throw `AppException` on expected failures.
 abstract class AuthRepository {
-  /// True only for the in-memory demo implementation (one-tap demo sign-in).
-  bool get supportsDemoSignIn;
-  Future<AppUser?> restoreSession();
+  /// Emits the current user (or null) first, then every change. Used for session restore.
+  Stream<AppUser?> authStateChanges();
   Future<AppUser> signIn(String email, String password);
-  Future<AppUser> signInDemo(Role role);
-  Future<AppUser> register({required String name, required String email, required String password});
+
+  /// Creates a CUSTOMER account. Nobody can register as owner/employee/platformAdmin here.
+  Future<AppUser> register({
+    required String name,
+    required String email,
+    required String password,
+    String? languageCode,
+  });
+  Future<void> sendPasswordReset(String email, {String? languageCode});
+  Future<void> sendEmailVerification({String? languageCode});
+  Future<AppUser?> reloadUser();
   Future<void> signOut();
 }
 

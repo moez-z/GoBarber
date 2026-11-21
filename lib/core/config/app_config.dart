@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 /// Build-time configuration. Values come from `--dart-define` /
 /// `--dart-define-from-file=env/dev.json` (the real env/*.json files are git-ignored),
 /// so no secrets or credentials live in the source code.
@@ -6,8 +8,12 @@ class AppConfig {
 
   static const environment = String.fromEnvironment('APP_ENV', defaultValue: 'dev');
 
-  /// Phase 1 runs on in-memory demo data. Phase 3 switches this to false (Firebase).
+  /// Catalog/appointment data still runs on in-memory demo data until Phase 3 (Firestore).
   static const useMockData = bool.fromEnvironment('USE_MOCK_DATA', defaultValue: true);
+
+  /// One-tap demo accounts. `kDebugMode` is a compile-time constant, so in release/profile
+  /// builds this is `false` and no define can switch it on.
+  static const demoEnabled = kDebugMode && bool.fromEnvironment('ENABLE_DEMO', defaultValue: true);
 
   /// Firebase project the app must be configured for. The id is public (it appears in the
   /// project's URLs), so a default is fine; it exists to catch a wrong/mixed-up

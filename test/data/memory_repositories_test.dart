@@ -2,17 +2,14 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:gobarber/core/errors/app_exception.dart';
 import 'package:gobarber/data/memory/memory_repositories.dart';
 import 'package:gobarber/models/appointment.dart';
-import 'package:gobarber/models/user.dart';
 
 void main() {
   late MemoryDb db;
-  late MemoryAuthRepository auth;
   late MemoryCatalogRepository catalog;
   late MemoryAppointmentRepository appts;
 
   setUp(() {
     db = MemoryDb();
-    auth = MemoryAuthRepository(db);
     catalog = MemoryCatalogRepository(db);
     appts = MemoryAppointmentRepository(db);
   });
@@ -34,25 +31,6 @@ void main() {
     final n = DateTime.now();
     return DateTime(n.year, n.month, n.day + 3, 10);
   }
-
-  group('auth (mock, no passwords stored)', () {
-    test('unknown e-mail or empty password is rejected', () async {
-      await expectCode(() => auth.signIn('nobody@x.com', 'abc'), ErrorCode.wrongCredentials);
-      await expectCode(() => auth.signIn('owner@gobarber.com', ''), ErrorCode.wrongCredentials);
-    });
-    test('the four roles exist and demo sign-in returns each role', () async {
-      for (final r in Role.values) {
-        expect((await auth.signInDemo(r)).role, r);
-      }
-    });
-    test('register validates input and creates a customer', () async {
-      await expectCode(() => auth.register(name: 'A', email: 'bad', password: '123456'), ErrorCode.invalidInput);
-      await expectCode(() => auth.register(name: 'A', email: 'a@x.com', password: '123'), ErrorCode.invalidInput);
-      final u = await auth.register(name: 'Ali', email: 'ali@x.com', password: '123456');
-      expect(u.role, Role.customer);
-      await expectCode(() => auth.register(name: 'Ali', email: 'ali@x.com', password: '123456'), ErrorCode.invalidInput);
-    });
-  });
 
   group('booking', () {
     test('a second booking of the same slot is rejected', () async {

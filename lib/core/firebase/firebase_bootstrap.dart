@@ -21,18 +21,21 @@ Future<FirebaseApp> initializeFirebase() async {
   return app;
 }
 
-/// Called from main(). Platforms that FlutterFire has not configured (iOS, macOS, Windows,
-/// Linux) throw UnsupportedError; in mock/demo mode the app then continues without Firebase.
-Future<void> bootstrapFirebase() async {
+/// Called from main(). Returns true when Firebase is ready. Platforms that FlutterFire has not
+/// configured (iOS, macOS, Windows, Linux) throw UnsupportedError; in mock/demo mode the app
+/// then continues without Firebase (real sign-in is disabled there).
+Future<bool> bootstrapFirebase() async {
   try {
     final app = await initializeFirebase();
     if (kDebugMode) {
       debugPrint('Firebase initialized: project=${app.options.projectId} app=${app.name}');
       unawaited(probeFirestore());
     }
+    return true;
   } on UnsupportedError catch (e) {
     if (!AppConfig.useMockData) rethrow;
     debugPrint('Firebase not available on this platform, continuing in mock mode: ${e.message}');
+    return false;
   }
 }
 

@@ -149,7 +149,7 @@ abstract class AppLocalizations {
   /// No description provided for @demoAccounts.
   ///
   /// In fr, this message translates to:
-  /// **'COMPTES DE DÉMONSTRATION'**
+  /// **'COMPTES DE DÉMONSTRATION (DEBUG)'**
   String get demoAccounts;
 
   /// No description provided for @roleCustomer.
@@ -637,6 +637,150 @@ abstract class AppLocalizations {
   /// In fr, this message translates to:
   /// **'{date}, {time}'**
   String whenOther(String date, String time);
+
+  /// No description provided for @forgotPassword.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe oublié ?'**
+  String get forgotPassword;
+
+  /// No description provided for @resetTitle.
+  ///
+  /// In fr, this message translates to:
+  /// **'Réinitialiser le mot de passe'**
+  String get resetTitle;
+
+  /// No description provided for @resetIntro.
+  ///
+  /// In fr, this message translates to:
+  /// **'Saisissez votre e-mail. Nous vous enverrons un lien pour choisir un nouveau mot de passe.'**
+  String get resetIntro;
+
+  /// No description provided for @resetSend.
+  ///
+  /// In fr, this message translates to:
+  /// **'Envoyer le lien'**
+  String get resetSend;
+
+  /// No description provided for @resetSent.
+  ///
+  /// In fr, this message translates to:
+  /// **'Si un compte existe pour cet e-mail, un lien de réinitialisation vient d’être envoyé. Pensez à vérifier vos courriers indésirables.'**
+  String get resetSent;
+
+  /// No description provided for @backToSignIn.
+  ///
+  /// In fr, this message translates to:
+  /// **'Retour à la connexion'**
+  String get backToSignIn;
+
+  /// No description provided for @passwordRules.
+  ///
+  /// In fr, this message translates to:
+  /// **'Au moins 8 caractères, avec une lettre et un chiffre.'**
+  String get passwordRules;
+
+  /// No description provided for @fieldRequired.
+  ///
+  /// In fr, this message translates to:
+  /// **'Champ obligatoire.'**
+  String get fieldRequired;
+
+  /// No description provided for @fieldInvalidEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse e-mail invalide.'**
+  String get fieldInvalidEmail;
+
+  /// No description provided for @fieldNameShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'Nom trop court.'**
+  String get fieldNameShort;
+
+  /// No description provided for @fieldPasswordShort.
+  ///
+  /// In fr, this message translates to:
+  /// **'8 caractères minimum.'**
+  String get fieldPasswordShort;
+
+  /// No description provided for @fieldPasswordWeak.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ajoutez au moins une lettre et un chiffre.'**
+  String get fieldPasswordWeak;
+
+  /// No description provided for @errInvalidEmail.
+  ///
+  /// In fr, this message translates to:
+  /// **'Adresse e-mail invalide.'**
+  String get errInvalidEmail;
+
+  /// No description provided for @errWeakPassword.
+  ///
+  /// In fr, this message translates to:
+  /// **'Mot de passe trop faible : 8 caractères minimum, avec une lettre et un chiffre.'**
+  String get errWeakPassword;
+
+  /// No description provided for @errEmailInUse.
+  ///
+  /// In fr, this message translates to:
+  /// **'Un compte existe déjà avec cet e-mail.'**
+  String get errEmailInUse;
+
+  /// No description provided for @errNetwork.
+  ///
+  /// In fr, this message translates to:
+  /// **'Problème de connexion. Vérifiez votre réseau.'**
+  String get errNetwork;
+
+  /// No description provided for @errTooMany.
+  ///
+  /// In fr, this message translates to:
+  /// **'Trop de tentatives. Réessayez plus tard.'**
+  String get errTooMany;
+
+  /// No description provided for @errUserDisabled.
+  ///
+  /// In fr, this message translates to:
+  /// **'Ce compte est désactivé.'**
+  String get errUserDisabled;
+
+  /// No description provided for @errUnavailable.
+  ///
+  /// In fr, this message translates to:
+  /// **'La connexion n’est pas disponible sur cette plateforme.'**
+  String get errUnavailable;
+
+  /// No description provided for @verifyBanner.
+  ///
+  /// In fr, this message translates to:
+  /// **'Vérifiez votre e-mail ({email}) pour sécuriser votre compte.'**
+  String verifyBanner(String email);
+
+  /// No description provided for @verifyResend.
+  ///
+  /// In fr, this message translates to:
+  /// **'Renvoyer l’e-mail'**
+  String get verifyResend;
+
+  /// No description provided for @verifyRefresh.
+  ///
+  /// In fr, this message translates to:
+  /// **'J’ai vérifié'**
+  String get verifyRefresh;
+
+  /// No description provided for @verifySent.
+  ///
+  /// In fr, this message translates to:
+  /// **'E-mail de vérification envoyé.'**
+  String get verifySent;
+
+  /// No description provided for @verifyNotYet.
+  ///
+  /// In fr, this message translates to:
+  /// **'Pas encore vérifié.'**
+  String get verifyNotYet;
 }
 
 class _AppLocalizationsDelegate

@@ -41,7 +41,13 @@ flutter build apk --debug
 - `lib/features` screens per role
 - `lib/l10n` ARB translation files (fr, ar)
 
-## Demo mode (Phase 1 only)
-Data is in memory and resets on restart. The login screen has one-tap demo accounts, and the mock sign-in
-**does not check passwords** (none are stored). It is for development only and is replaced by Firebase Auth in Phase 2.
-Demo e-mails: customer@, marcus@ (employee), owner@, ceo@ + `gobarber.com`.
+## Authentication (Phase 2.2)
+Real Firebase e-mail/password sign-in, registration (customers only), password reset, e-mail verification
+reminder and persistent sessions. Passwords: 8+ characters with a letter and a digit. Every real account is a
+**customer** until the Firestore role profiles arrive in Phase 2.3. Owner registration comes in Phase 2.4.
+
+## Demo mode (debug builds only)
+One-tap demo accounts appear on the login screen only in Flutter **debug** builds (`AppConfig.demoEnabled` is
+`kDebugMode && ENABLE_DEMO`, a compile-time constant, so release builds cannot enable it). Demo users have no
+Firebase identity and no password: they only see in-memory demo data and can never access real Firestore data.
+Disable them in debug with `--dart-define=ENABLE_DEMO=false`. Catalog and appointments are still in-memory until Phase 3.

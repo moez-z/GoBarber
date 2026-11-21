@@ -33,7 +33,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get newCustomer => 'حريف جديد؟ أنشئ حساب';
 
   @override
-  String get demoAccounts => 'حسابات تجريبية';
+  String get demoAccounts => 'حسابات تجريبية (للتطوير فقط)';
 
   @override
   String get roleCustomer => 'حريف';
@@ -317,4 +317,81 @@ class AppLocalizationsAr extends AppLocalizations {
   String whenOther(String date, String time) {
     return '$date، $time';
   }
+
+  @override
+  String get forgotPassword => 'نسيت كلمة السر؟';
+
+  @override
+  String get resetTitle => 'إعادة تعيين كلمة السر';
+
+  @override
+  String get resetIntro =>
+      'اكتب الإيميل متاعك وباش نبعثولك رابط باش تختار كلمة سر جديدة.';
+
+  @override
+  String get resetSend => 'ابعث الرابط';
+
+  @override
+  String get resetSent =>
+      'إذا فما حساب بالإيميل هذا، تبعثلو رابط إعادة التعيين. شوف زادة في الرسائل غير المرغوب فيها.';
+
+  @override
+  String get backToSignIn => 'رجوع للدخول';
+
+  @override
+  String get passwordRules => '8 خانات على الأقل، فيهم حرف ورقم.';
+
+  @override
+  String get fieldRequired => 'الخانة هاذي لازمة.';
+
+  @override
+  String get fieldInvalidEmail => 'الإيميل موش صحيح.';
+
+  @override
+  String get fieldNameShort => 'الاسم قصير برشا.';
+
+  @override
+  String get fieldPasswordShort => '8 خانات على الأقل.';
+
+  @override
+  String get fieldPasswordWeak => 'لازم فيها حرف ورقم.';
+
+  @override
+  String get errInvalidEmail => 'الإيميل موش صحيح.';
+
+  @override
+  String get errWeakPassword =>
+      'كلمة السر ضعيفة: 8 خانات على الأقل، فيها حرف ورقم.';
+
+  @override
+  String get errEmailInUse => 'فما حساب بالإيميل هذا من قبل.';
+
+  @override
+  String get errNetwork => 'مشكل في الكونيكسيون. ثبّت في الإنترنت متاعك.';
+
+  @override
+  String get errTooMany => 'برشا محاولات. عاود جرّب مبعد.';
+
+  @override
+  String get errUserDisabled => 'الحساب هذا موقوف.';
+
+  @override
+  String get errUnavailable => 'الدخول موش متاح على المنصة هاذي.';
+
+  @override
+  String verifyBanner(String email) {
+    return 'أكّد الإيميل متاعك ($email) باش نحميو حسابك.';
+  }
+
+  @override
+  String get verifyResend => 'عاود ابعث الإيميل';
+
+  @override
+  String get verifyRefresh => 'تأكدت';
+
+  @override
+  String get verifySent => 'تبعث إيميل التأكيد.';
+
+  @override
+  String get verifyNotYet => 'باقي ما تأكدش.';
 }

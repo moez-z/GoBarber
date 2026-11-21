@@ -33,7 +33,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get newCustomer => 'Nouveau client ? Créez un compte';
 
   @override
-  String get demoAccounts => 'COMPTES DE DÉMONSTRATION';
+  String get demoAccounts => 'COMPTES DE DÉMONSTRATION (DEBUG)';
 
   @override
   String get roleCustomer => 'Client';
@@ -317,4 +317,83 @@ class AppLocalizationsFr extends AppLocalizations {
   String whenOther(String date, String time) {
     return '$date, $time';
   }
+
+  @override
+  String get forgotPassword => 'Mot de passe oublié ?';
+
+  @override
+  String get resetTitle => 'Réinitialiser le mot de passe';
+
+  @override
+  String get resetIntro =>
+      'Saisissez votre e-mail. Nous vous enverrons un lien pour choisir un nouveau mot de passe.';
+
+  @override
+  String get resetSend => 'Envoyer le lien';
+
+  @override
+  String get resetSent =>
+      'Si un compte existe pour cet e-mail, un lien de réinitialisation vient d’être envoyé. Pensez à vérifier vos courriers indésirables.';
+
+  @override
+  String get backToSignIn => 'Retour à la connexion';
+
+  @override
+  String get passwordRules =>
+      'Au moins 8 caractères, avec une lettre et un chiffre.';
+
+  @override
+  String get fieldRequired => 'Champ obligatoire.';
+
+  @override
+  String get fieldInvalidEmail => 'Adresse e-mail invalide.';
+
+  @override
+  String get fieldNameShort => 'Nom trop court.';
+
+  @override
+  String get fieldPasswordShort => '8 caractères minimum.';
+
+  @override
+  String get fieldPasswordWeak => 'Ajoutez au moins une lettre et un chiffre.';
+
+  @override
+  String get errInvalidEmail => 'Adresse e-mail invalide.';
+
+  @override
+  String get errWeakPassword =>
+      'Mot de passe trop faible : 8 caractères minimum, avec une lettre et un chiffre.';
+
+  @override
+  String get errEmailInUse => 'Un compte existe déjà avec cet e-mail.';
+
+  @override
+  String get errNetwork => 'Problème de connexion. Vérifiez votre réseau.';
+
+  @override
+  String get errTooMany => 'Trop de tentatives. Réessayez plus tard.';
+
+  @override
+  String get errUserDisabled => 'Ce compte est désactivé.';
+
+  @override
+  String get errUnavailable =>
+      'La connexion n’est pas disponible sur cette plateforme.';
+
+  @override
+  String verifyBanner(String email) {
+    return 'Vérifiez votre e-mail ($email) pour sécuriser votre compte.';
+  }
+
+  @override
+  String get verifyResend => 'Renvoyer l’e-mail';
+
+  @override
+  String get verifyRefresh => 'J’ai vérifié';
+
+  @override
+  String get verifySent => 'E-mail de vérification envoyé.';
+
+  @override
+  String get verifyNotYet => 'Pas encore vérifié.';
 }

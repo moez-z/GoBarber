@@ -4,9 +4,13 @@ import 'package:gobarber/core/config/app_config.dart';
 import 'package:gobarber/core/errors/app_exception.dart';
 import 'package:gobarber/core/l10n_ext.dart';
 import 'package:gobarber/core/theme/app_theme.dart';
+import 'package:gobarber/data/auth/backend_auth_repository.dart';
+import 'package:gobarber/data/auth/disabled_auth_repository.dart';
+import 'package:gobarber/data/firebase/firebase_auth_backend.dart';
 import 'package:gobarber/data/memory/memory_repositories.dart';
 import 'package:gobarber/data/repositories.dart';
 import 'package:gobarber/features/auth/login_screen.dart';
+import 'package:gobarber/features/auth/verification_banner.dart';
 import 'package:gobarber/features/customer/customer_shell.dart';
 import 'package:gobarber/features/employee/employee_shell.dart';
 import 'package:gobarber/features/owner/owner_shell.dart';
@@ -24,30 +28,38 @@ class AppDependencies {
   final CatalogRepository catalog;
   final AppointmentRepository appointments;
 
-  factory AppDependencies.memory() {
+  /// In-memory catalog/appointments. Auth defaults to "disabled" (tests / unsupported platforms).
+  factory AppDependencies.memory({AuthRepository? auth}) {
     final db = MemoryDb();
     return AppDependencies(
-        auth: MemoryAuthRepository(db),
+        auth: auth ?? const DisabledAuthRepository(),
         catalog: MemoryCatalogRepository(db),
         appointments: MemoryAppointmentRepository(db));
   }
 
-  factory AppDependencies.fromConfig() {
-    if (AppConfig.useMockData) return AppDependencies.memory();
-    throw StateError('Firebase repositories are not implemented yet (Phase 2/3). Use USE_MOCK_DATA=true.');
+  /// Real Firebase authentication when Firebase initialized; data is still in memory (Phase 3).
+  factory AppDependencies.fromConfig({required bool firebaseReady}) {
+    if (!AppConfig.useMockData) {
+      throw StateError('Firestore repositories are not implemented yet (Phase 3). Use USE_MOCK_DATA=true.');
+    }
+    return AppDependencies.memory(
+        auth: firebaseReady ? BackendAuthRepository(FirebaseAuthBackend()) : const DisabledAuthRepository());
   }
 }
 
 class GoBarberApp extends StatelessWidget {
-  const GoBarberApp({super.key, required this.deps, this.useGoogleFonts = true});
+  const GoBarberApp({super.key, required this.deps, this.useGoogleFonts = true, this.demoEnabled});
   final AppDependencies deps;
   final bool useGoogleFonts;
+
+  /// Overrides AppConfig.demoEnabled (tests only). Null = use the build configuration.
+  final bool? demoEnabled;
 
   @override
   Widget build(BuildContext context) => MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
-          ChangeNotifierProvider(create: (_) => AuthProvider(deps.auth)),
+          ChangeNotifierProvider(create: (_) => AuthProvider(deps.auth, demoEnabled: demoEnabled)),
           ChangeNotifierProvider(create: (_) => CatalogProvider(deps.catalog)..load()),
           ChangeNotifierProvider(create: (_) => AppointmentProvider(deps.appointments)..load()),
         ],
@@ -77,6 +89,17 @@ class _AppView extends StatelessWidget {
         }
         return const Locale('fr');
       },
+      builder: (context, child) {
+        final u = context.watch<AuthProvider>().user;
+        final banner = u != null && !u.isDemo && !u.emailVerified;
+        // Same widget structure whether or not the banner shows, so navigation state survives.
+        return Column(children: [
+          const VerificationBanner(),
+          Expanded(
+              child: MediaQuery.removePadding(
+                  context: context, removeTop: banner, child: child ?? const SizedBox.shrink())),
+        ]);
+      },
       home: const _Gate(),
     );
   }
@@ -89,10 +112,11 @@ class _Gate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.watch<AuthProvider>().user;
+    final auth = context.watch<AuthProvider>();
+    final user = auth.user;
     final cat = context.watch<CatalogProvider>();
     final ap = context.watch<AppointmentProvider>();
-    if (!(cat.loaded && ap.loaded)) {
+    if (auth.initializing || !(cat.loaded && ap.loaded)) {
       final err = cat.error ?? ap.error;
       return Scaffold(
         body: Center(
