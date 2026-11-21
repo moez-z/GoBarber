@@ -1,5 +1,5 @@
 {
   "APP_ENV": "dev",
   "USE_MOCK_DATA": "true",
-  "FIREBASE_PROJECT_ID": ""
+  "FIREBASE_PROJECT_ID": "barbershop-7b59b"
 }

@@ -15,6 +15,17 @@ copy env\dev.example.json env\dev.json
 flutter run --dart-define-from-file=env/dev.json
 ```
 
+## Firebase (project `barbershop-7b59b`, Spark plan)
+`lib/firebase_options.dart` and `android/app/google-services.json` are generated and git-ignored.
+After a fresh clone run once:
+```bash
+dart pub global activate flutterfire_cli
+flutterfire configure --project=barbershop-7b59b --platforms=android,web --android-package-name=tn.gobarber.app
+```
+Firebase is initialized at startup (`lib/core/firebase/firebase_bootstrap.dart`). In debug builds the log shows
+`Firebase initialized: project=barbershop-7b59b` and a Firestore probe that must report
+`permission-denied` (rules locked). The app still runs on mock data until Phase 2.2.
+
 ## Check
 ```bash
 flutter analyze
